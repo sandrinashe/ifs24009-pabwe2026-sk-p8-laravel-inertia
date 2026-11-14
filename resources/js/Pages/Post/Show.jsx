@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Head, Link, router } from '@inertiajs/react';
 import AppLayout from '../../Layouts/AppLayout';
 import PostFormModal from '../../Components/PostFormModal';
-import MarkdownViewer from '../../Components/MarkdownViewer';
+import { MarkdownViewer } from '../../Components/LazyMarkdown';
 import { Spinner } from '../../Components/LoadingIndicator';
 
 export default function PostShow({ post, categories = [] }) {
@@ -51,12 +51,12 @@ export default function PostShow({ post, categories = [] }) {
                             <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${post.is_published ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}`}>
                                 {post.is_published ? 'Published' : 'Draf'}
                             </span>
-                            <span className="text-[11px] text-slate-400">Dibuat {post.created_at} · Diperbarui {post.updated_at}</span>
-                            {post.published_at && <span className="text-[11px] text-slate-400">· Terbit {post.published_at}</span>}
+                            <span className="text-[11px] text-slate-600">Dibuat {post.created_at} · Diperbarui {post.updated_at}</span>
+                            {post.published_at && <span className="text-[11px] text-slate-600">· Terbit {post.published_at}</span>}
                         </div>
 
                         <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">{post.title}</h1>
-                        {post.excerpt && <p className="text-slate-500 italic">{post.excerpt}</p>}
+                        {post.excerpt && <p className="text-slate-600 italic">{post.excerpt}</p>}
 
                         {/* Aksi */}
                         <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-100">
@@ -68,7 +68,7 @@ export default function PostShow({ post, categories = [] }) {
                                 disabled={busy === 'publish'}
                                 className="inline-flex items-center space-x-1.5 px-3.5 py-2 text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl disabled:opacity-60 transition"
                             >
-                                {busy === 'publish' && <Spinner className="w-3 h-3 text-slate-500" />}
+                                {busy === 'publish' && <Spinner className="w-3 h-3 text-slate-600" />}
                                 <span>{post.is_published ? 'Jadikan Draf' : 'Publikasikan'}</span>
                             </button>
                             {post.is_published && (

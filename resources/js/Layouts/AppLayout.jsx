@@ -52,7 +52,7 @@ export default function AppLayout({ children }) {
             <LoadingIndicator />
 
             {/* Mobile Header */}
-            <div className="md:hidden bg-white border-b border-slate-200 px-4 py-3 flex items-center justify-between sticky top-0 z-30">
+            <header className="md:hidden bg-white border-b border-slate-200 px-4 py-3 flex items-center justify-between sticky top-0 z-30">
                 <div className="flex items-center space-x-2">
                     <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white font-bold text-sm">B</div>
                     <span className="font-bold text-slate-800 text-lg">BlogVerse</span>
@@ -70,10 +70,11 @@ export default function AppLayout({ children }) {
                         )}
                     </svg>
                 </button>
-            </div>
+            </header>
 
             {/* Sidebar */}
             <aside
+                aria-label="Sidebar"
                 className={`fixed inset-y-0 left-0 z-40 w-64 bg-white border-r border-slate-200 flex flex-col transition-transform duration-200 ease-in-out md:static md:translate-x-0 ${
                     mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
                 }`}
@@ -104,7 +105,7 @@ export default function AppLayout({ children }) {
                         </div>
                         <div className="min-w-0 flex-1">
                             <p className="text-sm font-semibold text-slate-800 truncate">{user.name}</p>
-                            <p className="text-xs text-slate-500 truncate">@{user.username}</p>
+                            <p className="text-xs text-slate-600 truncate">@{user.username}</p>
                             <span className={`inline-block text-[10px] font-bold px-2 py-0.5 mt-1 rounded-full ${
                                 user.role === 'admin' ? 'bg-purple-100 text-purple-700' : 'bg-slate-200 text-slate-700'
                             }`}>
@@ -114,14 +115,14 @@ export default function AppLayout({ children }) {
                     </div>
                 )}
 
-                <nav className="flex-1 px-4 space-y-1.5 overflow-y-auto">
+                <nav aria-label="Menu dashboard" className="flex-1 px-4 space-y-1.5 overflow-y-auto">
                     <NavItem href="/dashboard/posts" icon="posts" label="Artikel Saya" active={path.startsWith('/dashboard')} />
                     <NavItem href="/" icon="home" label="Beranda Publik" active={path === '/' || path.startsWith('/articles')} />
                     <NavItem href="/profile" icon="profile" label="Profil Saya" active={path.startsWith('/profile')} />
 
                     {user?.role === 'admin' && (
                         <div className="pt-4 mt-4 border-t border-slate-100 space-y-1.5">
-                            <span className="px-3 text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-2">Admin Area</span>
+                            <span className="px-3 text-[11px] font-bold uppercase tracking-wider text-slate-600 block mb-2">Admin Area</span>
                             <NavItem href="/admin/users" icon="users" label="Manajemen User" active={path.startsWith('/admin/users')} tone="purple" />
                             <NavItem href="/admin/posts" icon="monitor" label="Semua Artikel" active={path.startsWith('/admin/posts')} tone="purple" />
                         </div>

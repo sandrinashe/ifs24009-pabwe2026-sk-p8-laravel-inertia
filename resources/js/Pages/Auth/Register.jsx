@@ -16,16 +16,16 @@ export default function Register() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-100 to-slate-200 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+        <main className="min-h-screen bg-gradient-to-br from-slate-100 to-slate-200 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
             <Head title="Daftar Akun" />
 
             <div className="sm:mx-auto sm:w-full sm:max-w-md text-center">
                 <div className="inline-flex w-12 h-12 rounded-2xl bg-indigo-600 items-center justify-center text-white font-bold text-2xl shadow-md">
                     B
                 </div>
-                <h2 className="mt-4 text-3xl font-extrabold text-slate-900 tracking-tight">
+                <h1 className="mt-4 text-3xl font-extrabold text-slate-900 tracking-tight">
                     Daftar Akun Baru
-                </h2>
+                </h1>
                 <p className="mt-2 text-sm text-slate-600">
                     Daftar sebagai penulis dan mulai publikasikan artikel Anda
                 </p>
@@ -120,7 +120,7 @@ export default function Register() {
                     </form>
 
                     <div className="mt-4 text-center text-sm">
-                        <Link href="/" className="text-slate-500 hover:text-indigo-600">&larr; Kembali ke Beranda Publik</Link>
+                        <Link href="/" className="text-slate-600 hover:text-indigo-600">&larr; Kembali ke Beranda Publik</Link>
                     </div>
 
                     <div className="mt-6 text-center text-sm text-slate-600">
@@ -134,7 +134,7 @@ export default function Register() {
                     </div>
                 </div>
             </div>
-        </div>
+        </main>
     );
 }
 

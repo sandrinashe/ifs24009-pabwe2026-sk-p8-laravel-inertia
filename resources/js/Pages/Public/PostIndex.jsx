@@ -79,7 +79,7 @@ export default function PostIndex({ posts, filters = {}, categories = [] }) {
             {/* Daftar Artikel */}
             <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
                 {posts.data.length === 0 ? (
-                    <div className="text-center py-20 text-slate-500">
+                    <div className="text-center py-20 text-slate-600">
                         <p className="text-lg font-bold text-slate-700">Belum ada artikel yang cocok.</p>
                         <p className="text-sm mt-1">Coba kata kunci atau kategori lain.</p>
                     </div>
@@ -94,15 +94,15 @@ export default function PostIndex({ posts, filters = {}, categories = [] }) {
                                 {post.cover_image_path ? (
                                     <img src={`/storage/${post.cover_image_path}`} alt={post.title} className="h-44 w-full object-cover" />
                                 ) : (
-                                    <div className="h-44 w-full bg-gradient-to-br from-indigo-100 to-purple-100 flex items-center justify-center text-4xl font-black text-indigo-300">
+                                    <div className="h-44 w-full bg-gradient-to-br from-indigo-100 to-purple-100 flex items-center justify-center text-4xl font-black text-indigo-600">
                                         {post.title.charAt(0).toUpperCase()}
                                     </div>
                                 )}
                                 <div className="p-5 flex-1 flex flex-col">
                                     <span className="self-start text-[10px] font-bold px-2 py-0.5 rounded-md bg-indigo-50 text-indigo-700">{post.category}</span>
                                     <h2 className="mt-2 text-lg font-bold text-slate-900 group-hover:text-indigo-600 transition line-clamp-2">{post.title}</h2>
-                                    {post.excerpt && <p className="mt-2 text-sm text-slate-500 line-clamp-3">{post.excerpt}</p>}
-                                    <div className="mt-auto pt-4 text-xs text-slate-400">
+                                    {post.excerpt && <p className="mt-2 text-sm text-slate-600 line-clamp-3">{post.excerpt}</p>}
+                                    <div className="mt-auto pt-4 text-xs text-slate-600">
                                         {post.author} · {post.published_at}
                                     </div>
                                 </div>
@@ -123,7 +123,7 @@ export default function PostIndex({ posts, filters = {}, categories = [] }) {
                                         ? 'bg-indigo-600 text-white border-indigo-600'
                                         : link.url
                                         ? 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
-                                        : 'bg-slate-50 text-slate-300 border-slate-200 cursor-not-allowed'
+                                        : 'bg-slate-50 text-slate-500 border-slate-200 cursor-not-allowed'
                                 }`}
                             />
                         ))}

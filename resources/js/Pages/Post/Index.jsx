@@ -8,9 +8,9 @@ const csrf = () => document.querySelector('meta[name="csrf-token"]')?.getAttribu
 
 function StatCard({ label, value, unit, tone, icon }) {
     const tones = {
-        indigo: ['bg-indigo-50 text-indigo-600 border-indigo-100', 'text-slate-900', 'text-slate-500'],
-        emerald: ['bg-emerald-50 text-emerald-600 border-emerald-100', 'text-emerald-600', 'text-emerald-600'],
-        amber: ['bg-amber-50 text-amber-600 border-amber-100', 'text-amber-600', 'text-amber-600'],
+        indigo: ['bg-indigo-50 text-indigo-600 border-indigo-100', 'text-slate-900', 'text-slate-600'],
+        emerald: ['bg-emerald-50 text-emerald-700 border-emerald-100', 'text-emerald-700', 'text-emerald-700'],
+        amber: ['bg-amber-50 text-amber-700 border-amber-100', 'text-amber-700', 'text-amber-700'],
     }[tone];
 
     return (
@@ -21,7 +21,7 @@ function StatCard({ label, value, unit, tone, icon }) {
                 </svg>
             </div>
             <div>
-                <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">{label}</span>
+                <span className="text-[11px] font-bold text-slate-600 uppercase tracking-wider block">{label}</span>
                 <div className="flex items-baseline space-x-1.5 mt-0.5">
                     <span className={`text-2xl font-black ${tones[1]}`}>{value}</span>
                     <span className={`text-xs font-medium ${tones[2]}`}>{unit}</span>
@@ -171,7 +171,7 @@ export default function PostIndex({ posts, filters = {}, categories = [], stats 
             <div className="w-full space-y-6">
                 <div>
                     <h1 className="text-2xl font-bold text-slate-900 tracking-tight">Artikel Saya</h1>
-                    <p className="text-sm text-slate-500 mt-1">Tulis, kelola, dan publikasikan artikel Anda. Ekspor/impor via Excel atau rancang instan dengan AI.</p>
+                    <p className="text-sm text-slate-600 mt-1">Tulis, kelola, dan publikasikan artikel Anda. Ekspor/impor via Excel atau rancang instan dengan AI.</p>
                 </div>
 
                 {/* Toolbar */}
@@ -201,7 +201,7 @@ export default function PostIndex({ posts, filters = {}, categories = [], stats 
                         href="/dashboard/posts/export"
                         className="inline-flex items-center space-x-1.5 px-3.5 py-2 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 text-xs font-semibold rounded-xl transition"
                     >
-                        <svg className="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-4 h-4 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                         </svg>
                         <span>Export Excel</span>
@@ -229,6 +229,7 @@ export default function PostIndex({ posts, filters = {}, categories = [], stats 
                 <div className="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-xs grid grid-cols-1 md:grid-cols-[1fr_12rem_12rem] gap-3">
                     <input
                         type="text"
+                        aria-label="Cari artikel berdasarkan judul atau konten"
                         placeholder="Cari judul atau konten..."
                         value={search}
                         onChange={(e) => {
@@ -238,6 +239,7 @@ export default function PostIndex({ posts, filters = {}, categories = [], stats 
                         className="w-full px-4 py-2 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-indigo-500"
                     />
                     <select
+                        aria-label="Filter kategori artikel"
                         value={category}
                         onChange={(e) => {
                             setCategory(e.target.value);
@@ -251,6 +253,7 @@ export default function PostIndex({ posts, filters = {}, categories = [], stats 
                         ))}
                     </select>
                     <select
+                        aria-label="Filter status artikel"
                         value={status}
                         onChange={(e) => {
                             setStatus(e.target.value);
@@ -267,8 +270,8 @@ export default function PostIndex({ posts, filters = {}, categories = [], stats 
                 {/* List View (bukan card) */}
                 {posts?.data?.length === 0 ? (
                     <div className="bg-white rounded-2xl border border-slate-200/80 p-12 text-center">
-                        <h3 className="text-base font-bold text-slate-800">Belum Ada Artikel</h3>
-                        <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">Mulai menulis artikel pertama Anda, impor dari Excel, atau gunakan AI Generator.</p>
+                        <h2 className="text-base font-bold text-slate-800">Belum Ada Artikel</h2>
+                        <p className="text-xs text-slate-600 mt-1 max-w-sm mx-auto">Mulai menulis artikel pertama Anda, impor dari Excel, atau gunakan AI Generator.</p>
                         <button onClick={openCreate} className="mt-4 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold rounded-xl transition">
                             + Tulis Artikel
                         </button>
@@ -290,7 +293,7 @@ export default function PostIndex({ posts, filters = {}, categories = [], stats 
                                     {post.cover_image_path && (
                                         <span className="text-[10px] font-semibold px-1.5 py-0.5 bg-slate-100 text-slate-600 rounded">📷 Cover</span>
                                     )}
-                                    <span className="text-[11px] text-slate-400">
+                                    <span className="text-[11px] text-slate-600">
                                         {post.created_at ? new Date(post.created_at).toLocaleDateString('id-ID') : ''}
                                     </span>
                                 </div>
@@ -319,7 +322,7 @@ export default function PostIndex({ posts, filters = {}, categories = [], stats 
                                                 e.stopPropagation();
                                                 setActiveMenuId(activeMenuId === post.id ? null : post.id);
                                             }}
-                                            className="w-8 h-8 rounded-lg flex items-center justify-center text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition"
+                                            className="w-8 h-8 rounded-lg flex items-center justify-center text-slate-600 hover:text-slate-800 hover:bg-slate-100 transition"
                                             title="Menu Tindakan"
                                             aria-label="Menu Tindakan"
                                         >
@@ -391,7 +394,7 @@ export default function PostIndex({ posts, filters = {}, categories = [], stats 
                                         ? 'bg-indigo-600 text-white border-indigo-600'
                                         : link.url
                                         ? 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
-                                        : 'bg-slate-50 text-slate-300 border-slate-200 cursor-not-allowed'
+                                        : 'bg-slate-50 text-slate-500 border-slate-200 cursor-not-allowed'
                                 }`}
                             />
                         ))}
@@ -436,6 +439,7 @@ export default function PostIndex({ posts, filters = {}, categories = [], stats 
                             </p>
                             <input
                                 type="file"
+                                aria-label="Berkas Excel yang akan diimpor"
                                 accept=".xlsx,.xls,.csv"
                                 onChange={(e) => importForm.setData('importFile', e.target.files[0])}
                                 className="block w-full text-xs text-slate-600 file:mr-3 file:px-3 file:py-2 file:rounded-lg file:border-0 file:bg-emerald-50 file:text-emerald-700 file:font-semibold"
@@ -462,14 +466,15 @@ export default function PostIndex({ posts, filters = {}, categories = [], stats 
                 <div className="fixed inset-0 z-50 overflow-y-auto flex items-start justify-center p-4 bg-slate-900/50">
                     <div className="bg-white rounded-2xl max-w-2xl w-full my-8 shadow-2xl overflow-hidden">
                         <div className="px-6 py-4 bg-purple-700 text-white flex items-center justify-between">
-                            <h3 className="font-bold">AI Generator Artikel</h3>
+                            <h2 className="font-bold">AI Generator Artikel</h2>
                             <button onClick={() => setShowAi(false)} className="text-purple-200 hover:text-white p-1" aria-label="Tutup">✕</button>
                         </div>
 
                         <div className="p-6 space-y-4">
                             <div>
-                                <label className="block text-xs font-bold uppercase tracking-wider text-slate-700">Topik / Instruksi *</label>
+                                <label htmlFor="ai-prompt" className="block text-xs font-bold uppercase tracking-wider text-slate-700">Topik / Instruksi *</label>
                                 <textarea
+                                    id="ai-prompt"
                                     rows={3}
                                     value={aiPrompt}
                                     onChange={(e) => setAiPrompt(e.target.value)}
@@ -479,7 +484,7 @@ export default function PostIndex({ posts, filters = {}, categories = [], stats 
                             </div>
 
                             <div>
-                                <label className="block text-xs font-bold uppercase tracking-wider text-slate-700">Jumlah Artikel (1-5)</label>
+                                <label htmlFor="ai-count" className="block text-xs font-bold uppercase tracking-wider text-slate-700">Jumlah Artikel (1-5)</label>
                                 <input
                                     id="ai-count"
                                     type="number"
@@ -518,7 +523,7 @@ export default function PostIndex({ posts, filters = {}, categories = [], stats 
                                             <div className="min-w-0">
                                                 <p className="text-sm font-semibold text-slate-900">{item.title}</p>
                                                 <span className="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-indigo-50 text-indigo-700">{item.category}</span>
-                                                {item.excerpt && <p className="text-xs text-slate-500 mt-1">{item.excerpt}</p>}
+                                                {item.excerpt && <p className="text-xs text-slate-600 mt-1">{item.excerpt}</p>}
                                             </div>
                                         </label>
                                     ))}

@@ -28,3 +28,35 @@ button:disabled,
 [aria-disabled='true'] {
     cursor: not-allowed;
 }
+
+/* Kontras konten Markdown (TOAST UI Viewer) agar memenuhi WCAG AA */
+.toastui-viewer-container .toastui-editor-contents a {
+    color: #1d4ed8;
+}
+
+.toastui-viewer-container .toastui-editor-contents blockquote,
+.toastui-viewer-container .toastui-editor-contents blockquote p {
+    color: #475569;
+}
+
+.toastui-viewer-container .toastui-editor-contents code {
+    color: #9f1239;
+}
+
+/* Tab Write/Preview pada TOAST UI Editor */
+.toastui-editor-defaultUI .toastui-editor-tabs .tab-item:not(.active) {
+    color: #475569;
+}
+
+/* Placeholder editor Markdown */
+.toastui-editor-defaultUI .placeholder {
+    color: #475569 !important;
+}
+
+.toastui-editor-defaultUI .toastui-editor-mode-switch .tab-item {
+    color: #475569;
+}
+
+.toastui-editor-defaultUI .toastui-editor-mode-switch .tab-item.active {
+    color: #1e3a8a;
+}

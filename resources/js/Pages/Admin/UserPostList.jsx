@@ -22,7 +22,7 @@ export default function UserPostList({ targetUser, posts, filters = {}, categori
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                     <div>
                         <h1 className="text-2xl font-bold text-slate-900 tracking-tight">Artikel {targetUser.name}</h1>
-                        <p className="text-sm text-slate-500 mt-0.5">@{targetUser.username} · {targetUser.email} · mode pantau (read-only)</p>
+                        <p className="text-sm text-slate-600 mt-0.5">@{targetUser.username} · {targetUser.email} · mode pantau (read-only)</p>
                     </div>
                     <a
                         href={`/admin/users/${targetUser.id}/posts/export`}
@@ -35,6 +35,7 @@ export default function UserPostList({ targetUser, posts, filters = {}, categori
                 <div className="bg-white p-4 rounded-2xl border border-slate-200/80 shadow-xs grid grid-cols-1 md:grid-cols-[1fr_12rem_12rem] gap-3">
                     <input
                         type="text"
+                        aria-label="Cari artikel berdasarkan judul atau konten"
                         placeholder="Cari judul atau konten..."
                         value={search}
                         onChange={(e) => {
@@ -44,6 +45,7 @@ export default function UserPostList({ targetUser, posts, filters = {}, categori
                         className="w-full px-4 py-2 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-purple-500"
                     />
                     <select
+                        aria-label="Filter kategori artikel"
                         value={category}
                         onChange={(e) => {
                             setCategory(e.target.value);
@@ -57,6 +59,7 @@ export default function UserPostList({ targetUser, posts, filters = {}, categori
                         ))}
                     </select>
                     <select
+                        aria-label="Filter status artikel"
                         value={status}
                         onChange={(e) => {
                             setStatus(e.target.value);

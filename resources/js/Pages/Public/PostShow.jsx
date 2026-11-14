@@ -23,8 +23,8 @@ export default function PostShow({ post }) {
 
                     <span className="block mt-5 w-fit text-[11px] font-bold px-2.5 py-1 rounded-md bg-indigo-50 text-indigo-700">{post.category}</span>
                     <h1 className="mt-3 text-4xl md:text-5xl font-black tracking-tight text-slate-900">{post.title}</h1>
-                    {post.excerpt && <p className="mt-4 text-xl text-slate-500">{post.excerpt}</p>}
-                    <p className="mt-5 text-sm text-slate-400">Oleh <span className="font-semibold text-slate-600">{post.author}</span> · {post.published_at}</p>
+                    {post.excerpt && <p className="mt-4 text-xl text-slate-600">{post.excerpt}</p>}
+                    <p className="mt-5 text-sm text-slate-600">Oleh <span className="font-semibold text-slate-600">{post.author}</span> · {post.published_at}</p>
 
                     <div className="mt-8 pt-8 border-t border-slate-200">
                         <MarkdownViewer content={post.content} />

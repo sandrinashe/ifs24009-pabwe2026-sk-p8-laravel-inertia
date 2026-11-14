@@ -7,12 +7,12 @@ const appName = import.meta.env.VITE_APP_NAME || 'BlogVerse';
 createInertiaApp({
     title: (title) => (title ? `${title} - ${appName}` : appName),
     resolve: (name) => {
-        const pages = import.meta.glob('./Pages/**/*.jsx', { eager: true });
-        const page = pages[`./Pages/${name}.jsx`];
-        if (!page) {
+        const pages = import.meta.glob('./Pages/**/*.jsx');
+        const loadPage = pages[`./Pages/${name}.jsx`];
+        if (!loadPage) {
             throw new Error(`Page ${name} not found`);
         }
-        return page;
+        return loadPage();
     },
     setup({ el, App, props }) {
         const root = createRoot(el);

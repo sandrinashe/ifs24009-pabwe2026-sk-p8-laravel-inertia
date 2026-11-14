@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useForm } from '@inertiajs/react';
-import MarkdownEditor from './MarkdownEditor';
+import { MarkdownEditor } from './LazyMarkdown';
 import { Spinner } from './LoadingIndicator';
 
 /**
@@ -43,13 +43,13 @@ export default function PostFormModal({ open, post = null, categories = [], onCl
     };
 
     return (
-        <div className="fixed inset-0 z-50 flex flex-col bg-white" role="dialog" aria-modal="true">
+        <div className="fixed inset-0 z-50 flex flex-col bg-white" role="dialog" aria-modal="true" aria-labelledby="post-modal-title">
             {/* Header (warna kontras) */}
             <div className="px-6 md:px-8 py-4 bg-indigo-700 text-white flex items-center justify-between shrink-0">
                 <div className="flex items-center space-x-3">
                     <span className="w-8 h-8 rounded-xl bg-white/20 flex items-center justify-center font-black text-sm">✎</span>
                     <div>
-                        <h3 className="text-base font-bold leading-tight">{post ? 'Ubah Artikel' : 'Tulis Artikel Baru'}</h3>
+                        <h2 id="post-modal-title" className="text-base font-bold leading-tight">{post ? 'Ubah Artikel' : 'Tulis Artikel Baru'}</h2>
                         <p className="text-xs text-indigo-100">Isi judul, kategori, ringkasan, dan konten Markdown artikel Anda</p>
                     </div>
                 </div>
@@ -61,7 +61,7 @@ export default function PostFormModal({ open, post = null, categories = [], onCl
             <form onSubmit={submit} className="flex-1 flex flex-col overflow-hidden">
                 <div className="flex-1 p-6 md:p-8 space-y-5 overflow-y-auto w-full">
                     <div>
-                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-700">Judul Artikel *</label>
+                        <label htmlFor="post-title" className="block text-xs font-bold uppercase tracking-wider text-slate-700">Judul Artikel *</label>
                         <input
                             id="post-title"
                             type="text"
@@ -76,7 +76,7 @@ export default function PostFormModal({ open, post = null, categories = [], onCl
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                            <label className="block text-xs font-bold uppercase tracking-wider text-slate-700">Kategori *</label>
+                            <label htmlFor="post-category" className="block text-xs font-bold uppercase tracking-wider text-slate-700">Kategori *</label>
                             <select
                                 id="post-category"
                                 value={form.data.category}
@@ -91,7 +91,7 @@ export default function PostFormModal({ open, post = null, categories = [], onCl
                         </div>
 
                         <div>
-                            <label className="block text-xs font-bold uppercase tracking-wider text-slate-700">Status</label>
+                            <label htmlFor="post-status" className="block text-xs font-bold uppercase tracking-wider text-slate-700">Status</label>
                             <select
                                 id="post-status"
                                 value={form.data.is_published ? '1' : '0'}
@@ -105,7 +105,7 @@ export default function PostFormModal({ open, post = null, categories = [], onCl
                     </div>
 
                     <div>
-                        <label className="block text-xs font-bold uppercase tracking-wider text-slate-700">Ringkasan (1-2 kalimat)</label>
+                        <label htmlFor="post-excerpt" className="block text-xs font-bold uppercase tracking-wider text-slate-700">Ringkasan (1-2 kalimat)</label>
                         <textarea
                             id="post-excerpt"
                             rows={2}

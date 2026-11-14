@@ -9,12 +9,10 @@
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700&display=swap" rel="stylesheet" />
+    <meta name="description" content="BlogVerse Pro - platform publikasi artikel multi-tier: baca artikel teknologi, pendidikan, gaya hidup, bisnis, dan opini tanpa login, atau daftar untuk mulai menulis.">
 
     @viteReactRefresh
-    @vite(['resources/css/app.css', 'resources/js/app.jsx'])
+    @vite(['resources/css/app.css', 'resources/js/app.jsx', "resources/js/Pages/{$page['component']}.jsx"])
     @inertiaHead
 </head>
 <body class="h-full font-sans antialiased text-slate-800 bg-slate-50">

@@ -21,7 +21,7 @@ export default function PublicLayout({ children }) {
                         <span className="font-extrabold text-lg tracking-tight text-slate-900">BlogVerse <span className="text-indigo-600">Pro</span></span>
                     </Link>
 
-                    <nav className="flex items-center gap-2">
+                    <nav aria-label="Navigasi utama" className="flex items-center gap-2">
                         <Link href="/articles" className="hidden sm:inline-flex px-3 py-2 text-sm font-semibold text-slate-600 hover:text-indigo-600 transition">
                             Artikel
                         </Link>
@@ -86,13 +86,13 @@ export default function PublicLayout({ children }) {
                         <p className="text-white font-extrabold text-lg">BlogVerse Pro</p>
                         <p className="text-sm text-slate-400 mt-1 max-w-sm">Platform publikasi artikel multi-tier: baca, tulis, dan kelola tulisan dengan mudah.</p>
                     </div>
-                    <nav className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-semibold">
+                    <nav aria-label="Navigasi footer" className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-semibold">
                         <Link href="/" className="hover:text-white transition">Beranda Publik</Link>
                         <Link href="/login" className="hover:text-white transition">Halaman Login</Link>
                         <Link href="/register" className="hover:text-white transition">Halaman Register</Link>
                     </nav>
                 </div>
-                <div className="border-t border-slate-800 py-4 text-center text-xs text-slate-500">
+                <div className="border-t border-slate-800 py-4 text-center text-xs text-slate-400">
                     &copy; {new Date().getFullYear()} BlogVerse Pro. Dibangun dengan Laravel 13, Inertia.js &amp; React.
                 </div>
             </footer>
